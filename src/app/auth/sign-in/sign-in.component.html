@@ -1,0 +1,28 @@
+<div class="sign-in">
+  <ng-container *ngIf="fg">
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="fg">
+          <div>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+            </mat-form-field>
+          </div>
+
+        </form>
+
+        <button mat-raised-button color="primary" (click)="onSignIn()" >Sign In</button>
+        <button mat-raised-button color="accent" (click)="onSignUp()">Sign Up</button>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div>
+

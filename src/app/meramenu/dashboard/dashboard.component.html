@@ -1,0 +1,31 @@
+<mat-card *ngIf="currentMenuId">
+  <ng-container *ngIf="fg">
+    <form [formGroup]="fg">
+      <div>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input type="number" matInput formControlName="price">
+        </mat-form-field>
+      </div>
+    </form>
+  </ng-container>
+  <button type="button" mat-button (click)="saveItem()">
+    Save Item
+  </button>
+</mat-card>
+
+
+
+<ng-container *ngFor="let menu of menus|async">
+  <mat-card (click)="currentMenuId = menu.id">
+    {{menu?.name}} <span *ngIf="menu.id === currentMenuId" >Selected</span>
+    <div *ngFor="let foodItem of menu.food_items">
+      {{foodItem.name}} - {{foodItem.price | currency: 'INR': 'symbol-narrow'}}
+    </div>
+  </mat-card>
+</ng-container>
